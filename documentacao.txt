@@ -1,0 +1,50 @@
+-- criar projeto
+-- bibliotecas instaladas
+
+** yarn add express
+** yarn add typescript -D
+** yarn add @types/express -D
+** yarn tsc --init
+** yarn add cors
+** yarn add @types/cors -D
+
+-- criar pasta src
+-- criar arquivos server.ts e routes.ts
+
+-- para rodar o typescript comando
+** yarn add ts-node-dev -D
+
+-- adicionar no script no package.json comando 
+** "dev": "ts-node-dev --transpile-only src/server.ts"
+
+
+TRATANDO ERROS
+-- instalar biblioteca para tratar ERROS
+** yarn add express-async-errors 
+   Obs sempre import-la embaixo dos metodos do express SENÂO da erro
+-- Neste caso seria criado pasta Error>AppError.ts
+-- depois importar server.ts
+
+-- crie o banco de dados
+-- instalar o prima na aplicação
+** yarn add prisma
+** yarn add @prisma/client
+** npx prisma init
+
+- irá gerar o arquivo prisma e .env nele adicione os dados do banco de dados
+-- em src crie prisma>index.ts  e adicione as configs prismaClient
+
+CRIAR MIGRATIONS 
+No Prisma, as migrações (migrations) referem-se a um conjunto de operações que permitem a você 
+modificar o esquema de banco de dados de forma controlada e rastreável. 
+
+
+-- hora de modelar os dados em schema.prisma  adicione a modelagem de dados
+   e depois crie a migration com comando
+** yarn prisma migrate dev   *OBS pedira o nome da migration que vc pode escolher neste caso sera create_table_users
+   teoricamente irá criar a prima>migrations>create_table_users
+   Obs verificar la no beekeeper se o _prisma_migrations foi criado
+-- confirmado então crie as outras schemas no schema.prisma, neste projeto foram criados 2 migrations
+
+
+
