@@ -9,6 +9,9 @@
 ** yarn add @types/cors -D
 ** yarn add bcryptjs
 ** yarn add @types/bcryptjs -D
+** yarn add jsonwebtoken
+** yarn add @types/jsonwebtoken -D
+** yarn add dotenv
 
 -- criar pasta src
 -- criar arquivos server.ts e routes.ts
@@ -18,6 +21,7 @@
 
 -- adicionar no script no package.json comando 
 ** "dev": "ts-node-dev --transpile-only src/server.ts"
+-- em tsconfig altere "strict": true  para  "strict": false
 
 
 TRATANDO ERROS
@@ -53,5 +57,7 @@ ESTRUTURANDO PASTAS
     a estrutura fica assim 
     crontrollers = controladores
     services = logica e requisicoes que os controladores serão usados com o bd e validações
+
+--     
     
 
