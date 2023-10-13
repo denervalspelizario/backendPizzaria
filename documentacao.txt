@@ -7,6 +7,8 @@
 ** yarn tsc --init
 ** yarn add cors
 ** yarn add @types/cors -D
+** yarn add bcryptjs
+** yarn add @types/bcryptjs -D
 
 -- criar pasta src
 -- criar arquivos server.ts e routes.ts
@@ -46,5 +48,10 @@ modificar o esquema de banco de dados de forma controlada e rastreável.
    Obs verificar la no beekeeper se o _prisma_migrations foi criado
 -- confirmado então crie as outras schemas no schema.prisma, neste projeto foram criados 2 migrations
 
-
+ESTRUTURANDO PASTAS
+-- crie em src pastas controller e services
+    a estrutura fica assim 
+    crontrollers = controladores
+    services = logica e requisicoes que os controladores serão usados com o bd e validações
+    
 
