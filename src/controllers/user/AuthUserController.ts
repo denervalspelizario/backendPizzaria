@@ -10,6 +10,7 @@ class AuthUserController {
 
     const auth =  await authUserService.execute({email, password}); // passando os dados para o metodo service
 
+
     return res.json(auth);
   }
 }

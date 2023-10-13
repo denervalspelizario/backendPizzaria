@@ -43,6 +43,7 @@ class AuthUserService {
       }
     )
    
+    // objeto que será gerado
     const userProfile = {
       id: user.id,
       name: user.name,
