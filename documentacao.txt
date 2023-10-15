@@ -58,6 +58,9 @@ ESTRUTURANDO PASTAS
     crontrollers = controladores
     services = logica e requisicoes que os controladores serão usados com o bd e validações
 
---     
+-- depois de criar a rotas de login e cadastro tanto service quanto controller 
+-- criar middleware que usuario tem que sempre imformar um token para rota    
+** Obs na middleware sera usando uma tipagem para usuario_id, 
+   essa tipagem fica em src/@types/index.d.ts tem que ir em tsconfig e adicionar "typeRoots": ["./src/@types"],  
     
 
