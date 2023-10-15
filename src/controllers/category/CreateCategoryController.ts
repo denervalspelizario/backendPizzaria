@@ -2,7 +2,7 @@ import { Request, Response, response } from "express";
 import { CreateCategoryService } from "../../services/category/CreateCategoryService";
 
 
-// criação de user
+// criação de categoria
 class CreateCategoryController {
   async handle(req: Request, res:Response){
     const {name} = req.body;
