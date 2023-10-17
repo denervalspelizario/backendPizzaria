@@ -12,6 +12,8 @@
 ** yarn add jsonwebtoken
 ** yarn add @types/jsonwebtoken -D
 ** yarn add dotenv
+** yarn add multer
+** yarn add @types/multer -D
 
 -- criar pasta src
 -- criar arquivos server.ts e routes.ts
@@ -64,5 +66,20 @@ ESTRUTURANDO PASTAS
    essa tipagem fica em src/@types/index.d.ts tem que ir em tsconfig e adicionar "typeRoots": ["./src/@types"],  
 
 -- sempre seguir essa regra cria o service, cria controller depois adiciona na rota 
+SEQUENCIA CRIAÇÂO
+-- Rotas controllers e services user
+-- Rotas controllers e services category
+-- Rotas controllers e services product
+
+** observacao em product o armazenamento será feito dentro do prorpio app pois são poucas imagens MAS se quiser usar a opçao
+   da cubos é possivel ambbos os casos a biblioteca multer será usada
+   passo a passo do upload  em src>config  configurações do multer que será responsavel por fazer upload
+   em tmp(fora de src) será onde sera adicionado imagem 
+   config>multer será responsável por configurar o upload de imagem que será repassado  
+   -- atentar as configs em rotas cadastro de produto e CreateProductController e CreateProductService
+      e atentar para a server.ts a configuraçao para acessar essas imagens criadas na pasta tmp  
+
+
+
     
 
