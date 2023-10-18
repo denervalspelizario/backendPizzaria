@@ -77,7 +77,9 @@ SEQUENCIA CRIAÇÂO
    em tmp(fora de src) será onde sera adicionado imagem 
    config>multer será responsável por configurar o upload de imagem que será repassado  
    -- atentar as configs em rotas cadastro de produto e CreateProductController e CreateProductService
-      e atentar para a server.ts a configuraçao para acessar essas imagens criadas na pasta tmp  
+      e atentar para a server.ts a configuraçao para acessar essas imagens criadas na pasta tmp
+      
+        
 
 
 
