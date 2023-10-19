@@ -3,12 +3,10 @@ import prismaClient from "../../prisma"; // importando o prisma para trabalhar c
 // Tipagem 
 interface RemoveOrderRequest{
   order_id: string;
-
 }
 
 class RemoveOrderService {
   async execute({ order_id }: RemoveOrderRequest){ // adicionando  tipagem
-
 
     // fazendo a query 
     const order = await prismaClient.order.delete({

@@ -18,8 +18,13 @@ import { AddItemController } from './controllers/orders/AddItemController';
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import { RemoveItemController } from './controllers/orders/RemoveItemController';
 
+import { SendOrderController } from './controllers/orders/SendOrderController';
+import { ListOrderController } from './controllers/orders/ListOrderController';
+
 import multer from 'multer';
 import uploadConfig from './config/multer'
+
+
 
 
 
@@ -30,19 +35,15 @@ const upload = multer(uploadConfig.upload("./tmp"));
 
 // Rotas de USER
 router.post('/users', new CreateUserController().handle)
-
 router.post('/session', new AuthUserController().handle)
-
 router.get('/me', isAuthenticated, new DetailUserController().handle)
 
 // Rotas CATEGORY
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
-
 router.get('/category', isAuthenticated, new ListCategoryController().handle)
 
 // Rotas PRODUCT
 router.post('/product', isAuthenticated, upload.single('file') ,new CreateProductController().handle)
-
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
 
 // Rotas ORDERS
@@ -50,6 +51,9 @@ router.post('/order', isAuthenticated, new CreateOrderController().handle)
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle)
 router.post('/order/add', isAuthenticated, new AddItemController().handle) 
 router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle) 
+router.put('/order/send', isAuthenticated, new SendOrderController().handle) 
+router.get('/orders', isAuthenticated, new ListOrderController().handle) 
+
 
 
 
