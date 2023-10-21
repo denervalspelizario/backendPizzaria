@@ -8,7 +8,7 @@ class RemoveItemController{
 
                      // indicando que item_id será uma string   
     const item_id = req.query.item_id as string;
-    console.log(item_id)
+    
 
     const removeItemService = new RemoveItemService();
 
