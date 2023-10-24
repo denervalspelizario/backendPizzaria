@@ -16,7 +16,7 @@ model User { // nome da modelagem
   name String
   email String
   password String
-  created_at DateTime? @default(now())
+  created_at DateTime? @default(now()) // por default vai marcar o horario de AGORA ou seja no momento que foi criado
   updated_at DateTime? @default(now())
 
   @@map("users") // nome da tabela
