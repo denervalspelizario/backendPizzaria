@@ -1,7 +1,6 @@
-import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
+import prismaClient from "../../prisma"; 
 import { hash } from "bcryptjs";
 
-// Tipagem 
 interface UserRequest{
   name: string;
   email: string;
@@ -10,7 +9,7 @@ interface UserRequest{
 
 
 class CreateUserService {
-  async execute({name, email, password}: UserRequest){ // adicionando  tipagem
+  async execute({name, email, password}: UserRequest){ 
 
     if(!name){
       throw new Error("Field name is required")
@@ -20,12 +19,11 @@ class CreateUserService {
       throw new Error("Field password is required")
     }
 
-
-    // Validando email
     if(!email){
       throw new Error("Email incorrect")
     }
-    // Validando se email já existe
+    
+
     const emailAlreadyExists = await prismaClient.user.findFirst({
       where: {
         email:email
@@ -36,7 +34,7 @@ class CreateUserService {
       throw new Error("User already exists")
     }
 
-    // criptografando a senha
+    
     const passwordHash = await hash(password, 8)
    
     const user = await prismaClient.user.create({
@@ -45,7 +43,7 @@ class CreateUserService {
         email: email,
         password: passwordHash
       },
-      select: { // só vai aparecer retornar os itens que estiverem true o resto vai ocultar
+      select: { 
         id: true,
         email: true,
         name: true

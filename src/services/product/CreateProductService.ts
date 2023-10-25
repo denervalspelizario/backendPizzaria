@@ -1,6 +1,5 @@
-import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
+import prismaClient from "../../prisma"; 
 
-// Tipagem 
 interface ProductRequest{
   name: string;
   price: string;
@@ -10,10 +9,8 @@ interface ProductRequest{
 }
 
 class CreateProductService {
-  async execute({ name, price, description, banner, category_id }: ProductRequest){ // adicionando  tipagem
+  async execute({ name, price, description, banner, category_id }: ProductRequest){ 
 
-
-    // fazendo a query 
     const product = await prismaClient.product.create({
       data:{
         name: name,
@@ -24,7 +21,7 @@ class CreateProductService {
       } 
     })
 
-    return product; // retornando o valor da query
+    return product;
   }
 }
 

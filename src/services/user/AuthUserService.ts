@@ -1,8 +1,7 @@
-import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
+import prismaClient from "../../prisma"; 
 import { compare } from "bcryptjs";
 import { sign } from "jsonwebtoken";
 
-// Tipagem 
 interface AuthRequest{
   email: string;
   password: string;
@@ -10,9 +9,8 @@ interface AuthRequest{
 
 
 class AuthUserService {
-  async execute({email, password}: AuthRequest){ // adicionando  tipagem
+  async execute({email, password}: AuthRequest){ 
 
-    // validar email
     const user = await prismaClient.user.findFirst({
       where:{
         email: email
@@ -23,27 +21,24 @@ class AuthUserService {
       throw new Error("User/password incorrect")
     }
 
-    //validar password compare(bcryptjs)
     const passwordCompare = await compare(password, user.password)
 
     if(!passwordCompare){
       throw new Error("User/password incorrect")
     }
 
-    // gerando token
     const token = sign(
       {
         name: user.name,
         email: user.email
       },
-      process.env.JTW_PASSWORD, // senha jwt  ** nao esquecer de alterar "script":false no tsconfig
+      process.env.JTW_PASSWORD, 
       {
         subject: user.id,
-        expiresIn: '30d'  // expira em 30 dias  
+        expiresIn: '30d' 
       }
     )
    
-    // objeto que será gerado
     const userProfile = {
       id: user.id,
       name: user.name,

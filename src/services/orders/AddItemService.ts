@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
+import prismaClient from "../../prisma"; 
 
 // Tipagem 
 interface ItemRequest{
@@ -8,10 +8,8 @@ interface ItemRequest{
 }
 
 class AddItemService {
-  async execute({ order_id, product_id, amount }: ItemRequest){ // adicionando  tipagem
+  async execute({ order_id, product_id, amount }: ItemRequest){ 
 
-
-    // fazendo a query 
     const order = await prismaClient.item.create({
       data:{
         order_id: order_id,
@@ -20,7 +18,7 @@ class AddItemService {
       } 
     })
 
-    return order; // retornando o valor da query
+    return order; 
   }
 }
 

@@ -1,4 +1,4 @@
-import { Request, Response, response } from "express";
+import { Request, Response } from "express";
 import { CreateUserService } from "../../services/user/CreateUserService";
 
 
@@ -7,9 +7,9 @@ class CreateUserController {
   async handle(req: Request, res:Response){
     const {name, email, password} = req.body;
 
-    const createUserService = new CreateUserService(); // funcao service que faz toda logica
+    const createUserService = new CreateUserService(); 
 
-    const user =  await createUserService.execute({name, email, password}); // passando os dados para o metodo service
+    const user =  await createUserService.execute({name, email, password}); 
 
     return res.json(user)
   }

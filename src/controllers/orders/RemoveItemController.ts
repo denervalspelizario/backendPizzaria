@@ -6,7 +6,6 @@ import { RemoveItemService } from "../../services/orders/RemoveItemService";
 class RemoveItemController{
   async handle(req: Request, res: Response){
 
-                     // indicando que item_id será uma string   
     const item_id = req.query.item_id as string;
     
 

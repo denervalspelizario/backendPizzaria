@@ -1,4 +1,4 @@
-import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
+import prismaClient from "../../prisma"; 
 
 // Tipagem 
 interface OrderRequest{
@@ -7,10 +7,8 @@ interface OrderRequest{
 }
 
 class CreateOrderService {
-  async execute({ table, name }: OrderRequest){ // adicionando  tipagem
-
-
-    // fazendo a query 
+  async execute({ table, name }: OrderRequest){ 
+ 
     const order = await prismaClient.order.create({
       data:{
         table: table,
@@ -18,7 +16,7 @@ class CreateOrderService {
       } 
     })
 
-    return order; // retornando o valor da query
+    return order; 
   }
 }
 

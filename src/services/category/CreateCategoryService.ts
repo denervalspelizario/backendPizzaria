@@ -1,14 +1,12 @@
 import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
 
-
-// Tipagem 
 interface CategoryRequest{
   name: string;
 }
 
 
 class CreateCategoryService {
-  async execute({ name }: CategoryRequest){ // adicionando  tipagem
+  async execute({ name }: CategoryRequest){ 
 
     if(name === ''){
       throw new Error('Name invalid')
@@ -18,7 +16,7 @@ class CreateCategoryService {
       data: {
         name: name,
       },
-      select: { // só vai aparecer retornar os itens que estiverem true o resto vai ocultar
+      select: { 
         id: true,
         name: true,
       }  

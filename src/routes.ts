@@ -24,35 +24,29 @@ import { ListOrderController } from './controllers/orders/ListOrderController';
 import { DetailOrderController } from './controllers/orders/DetailOrderController';
 import { FinishOrderController } from './controllers/orders/FinishOrderController';
 
-
 import multer from 'multer';
 import uploadConfig from './config/multer'
 
-
 const router = Router();
 
-// configurações de upload de imagem
 const upload = multer(uploadConfig.upload("./tmp"));
 
-// Rota teste
+
 router.get('./teste', (req: Request, res: Response) => {
   return res.json({ok: true})
 })
 
-// Rotas de USER
+
 router.post('/users', new CreateUserController().handle)
 router.post('/session', new AuthUserController().handle)
 router.get('/me', isAuthenticated, new DetailUserController().handle)
 
-// Rotas CATEGORY
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
 router.get('/category', isAuthenticated, new ListCategoryController().handle)
 
-// Rotas PRODUCT
 router.post('/product', isAuthenticated, upload.single('file') ,new CreateProductController().handle)
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
 
-// Rotas ORDERS
 router.post('/order', isAuthenticated, new CreateOrderController().handle)
 router.delete('/order', isAuthenticated, new RemoveOrderController().handle)
 router.post('/order/add', isAuthenticated, new AddItemController().handle) 
@@ -61,10 +55,5 @@ router.put('/order/send', isAuthenticated, new SendOrderController().handle)
 router.get('/orders', isAuthenticated, new ListOrderController().handle) 
 router.get('/order/detail', isAuthenticated, new DetailOrderController().handle) 
 router.put('/order/finish', isAuthenticated, new FinishOrderController().handle) 
-
-
-
-
-
 
 export { router };

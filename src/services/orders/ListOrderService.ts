@@ -1,8 +1,8 @@
-import prismaClient from "../../prisma"; // importando o prisma para trabalhar com o banco
+import prismaClient from "../../prisma"; 
 
 
 class ListOrderService {
-  async execute(){ // adicionando  tipagem
+  async execute(){ 
 
     // fazendo a query 
     const order = await prismaClient.order.findMany({
@@ -11,12 +11,12 @@ class ListOrderService {
         draft: false
       },
       orderBy: { 
-        created_at: 'desc' // por ordem descrescente
+        created_at: 'desc' 
       }
        
     })
 
-    return order; // retornando o valor da query
+    return order; 
   }
 }
 

@@ -8,17 +8,15 @@ class CreateProductController {
     const {name, price, description, category_id} = req.body;
     
 
-    const createProductService = new CreateProductService(); // funcao service que faz toda logica
+    const createProductService = new CreateProductService(); 
 
-    // se req.file nao exister ou seja usuario não adicionou nenehuma imagem
     if(!req.file){
       throw new Error("error upload file")
     } else {
 
-      // pegando por desestruturação filename(imagem) e mudando o nome para banner
       const {originalname, filename: banner} = req.file;
 
-      const product =  await createProductService.execute({ // passando os dados para o metodo service
+      const product =  await createProductService.execute({ 
         name,
         price,
         description,
