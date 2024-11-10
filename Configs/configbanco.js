@@ -14,4 +14,6 @@
   * na pasta src cire prisma> index.ts
     e configure o prismaclient
 
+  * crie as migration dentro de prisma> schema.prisma  
+
 */

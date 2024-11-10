@@ -12,3 +12,93 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// comando para criar uma migration: yarn prisma migrate dev
+
+// model User que no banco será users
+model User {
+  id String @id @default(uuid()) //id
+  name String // nome
+  email String // email
+  password String // senha
+  // data de criação que sera criada automaticamente
+  created_at DateTime? @default(now()) 
+  // data de update que sera criada automaticamente
+  updated_at DateTime? @default(now()) 
+
+  // nome da tabela la no banco de dados
+  @@map("users")
+}
+
+// model Category que no banco será categories
+model Categoria{
+  id String @id @default(uuid())
+  name String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("categorias")
+  //indicando que uma categoria pode estar registrada em varios produtos
+  produtos Produto[]
+}
+
+// model Product que no banco será products
+model Produto{
+  id String @id @default(uuid())
+  name String
+  price String
+  description String
+  banner String
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  // criando relaçao da tabela categoria com product
+  // então o campo category_id só pode receber ids  dos ids de Category
+  categorias Categoria @relation(fields: [category_id], references: [id])
+
+  @@map("produtos")
+  category_id String
+
+  //indicando que um item pode estar registrada em varios produtos
+  itemsDoPedido ItemDoPedido[]
+}
+
+// model Order(pedido) que no banco será orders
+model Pedido{
+  id String @id @default(uuid())
+  table Int
+  status Boolean @default(false)
+
+  // draft será uma especie de rascunho do pedido enqunato não é feito na cozinha
+  // por isso ele começa sempre com true 
+  draft Boolean @default(true)
+  name String?
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  @@map("pedidos")
+  //indicando que um item pode estar registrada em varias ordens
+  itemsDoPedido ItemDoPedido[]
+}
+
+// model Item que no banco será items
+model ItemDoPedido{
+  id String @id @default(uuid())
+  amount Int
+
+  created_at DateTime? @default(now())
+  updated_at DateTime? @default(now())
+
+  // todo item do pedido tera id do pedido(order_id)
+  // todo item do pedido tera id do produto(product_id)
+  pedidos Pedido @relation(fields: [order_id], references: [id])
+  produtos Produto @relation(fields: [product_id], references: [id])
+
+  @@map("itemsDoPedido")
+  order_id String
+  product_id String
+
+}
+
+
