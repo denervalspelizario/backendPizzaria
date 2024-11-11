@@ -16,4 +16,7 @@
 
   * crie as migration dentro de prisma> schema.prisma  
 
+  * depois de criado as migration gere elas como o comando yarn prisma migrate dev
+    e confira se no banco foi criado tudo certo  
+
 */
