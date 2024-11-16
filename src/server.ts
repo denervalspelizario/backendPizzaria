@@ -7,6 +7,9 @@ import 'express-async-errors';
 // import do cors
 import cors from 'cors';
 
+// import para poder acessar caminhos de arquivos
+import path from 'path'
+
 
 // import da rota
 import  router  from './routes';
@@ -22,7 +25,16 @@ app.use(express.json());
 app.use(cors())
 
 // chamando a rota router com um prefixo
-app.use('/api', router);
+app.use(router);
+
+
+// middleware que acessa o caminho da pasta tmp para pegar um arquivo especifico
+app.use(
+  '/files',
+  express.static(path.resolve(__dirname, '..', 'tmp'))
+)
+
+
 
 // midleware de tratamento de erro
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

@@ -16,6 +16,9 @@
   
   add o cors ao projeto: yarn add cors
 
+  add biblioteca para trabalhar com envio de imagens : yarn add multer
+  add tipagem do multer: yarn add @types/multer -D
+
   criando estrutura basica: yarn tsc --init
   
   script para rodar com ts: yarn add ts-node-dev -D 
